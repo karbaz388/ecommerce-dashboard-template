@@ -1,17 +1,39 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const extraSlice = createSlice({
-  name: "extra",
+  name: 'extra',
   initialState: {
-    openedComponent: "Dashboard",
+    openedComponent: 'Dashboard',
     isNavbarOpened: false,
     isViewProductModalOpened: false,
     isCreateProductModalOpened: false,
     isUpdateProductModalOpened: false,
   },
-  reducers: {},
+  reducers: {
+    toggleComponent: (state, action) => {
+      state.openedComponent = action.payload;
+    },
+    toggleNavbar: (state) => {
+      state.isNavbarOpened = !state.isNavbarOpened;
+    },
+    toggleCreateProductModal: (state) => {
+      state.isCreateProductModalOpened = !state.isCreateProductModalOpened;
+    },
+    toggleViewProductModal: (state) => {
+      state.isViewProductModalOpened = !state.isViewProductModalOpened;
+    },
+    toggleUpdateProductModal: (state, action) => {
+      state.isUpdateProductModalOpened = !state.isUpdateProductModalOpened;
+    },
+  },
 });
 
-export const {} = extraSlice.actions;
+export const {
+  toggleComponent,
+  toggleNavbar,
+  toggleCreateProductModal,
+  toggleViewProductModal,
+  toggleUpdateProductModal,
+} = extraSlice.actions;
 
 export default extraSlice.reducer;

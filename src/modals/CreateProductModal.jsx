@@ -1,44 +1,44 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createNewProduct } from "../store/slices/productsSlice";
-import { toggleCreateProductModal } from "../store/slices/extraSlice";
-import { LoaderCircle } from "lucide-react";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createNewProduct } from '../store/slices/productsSlice';
+import { toggleCreateProductModal } from '../store/slices/extraSlice';
+import { LoaderCircle } from 'lucide-react';
 
 const CreateProductModal = () => {
   const { loading } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    price: "",
-    category: "Electronics",
-    stock: "",
+    name: '',
+    description: '',
+    price: '',
+    category: 'Electronics',
+    stock: '',
     images: [],
   });
 
   const categoryOptions = [
-    "Electronics",
-    "Fashion",
-    "Home & Garden",
-    "Sports",
-    "Books",
-    "Beauty",
-    "Automotive",
-    "Kids & Baby",
+    'Electronics',
+    'Fashion',
+    'Home & Garden',
+    'Sports',
+    'Books',
+    'Beauty',
+    'Automotive',
+    'Kids & Baby',
   ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("name", formData.name);
-    data.append("description", formData.description);
-    data.append("price", formData.price);
-    data.append("category", formData.category);
-    data.append("stock", formData.stock);
+    data.append('name', formData.name);
+    data.append('description', formData.description);
+    data.append('price', formData.price);
+    data.append('category', formData.category);
+    data.append('stock', formData.stock);
 
     for (let i = 0; i < formData.images.length; i++) {
-      data.append("images", formData.images[i]);
+      data.append('images', formData.images[i]);
     }
 
     dispatch(createNewProduct(data));
@@ -54,14 +54,9 @@ const CreateProductModal = () => {
           >
             &times;
           </button>
-          <h2 className="text-2xl font-bold mb-4 text-center">
-            Create New Product
-          </h2>
+          <h2 className="text-2xl font-bold mb-4 text-center">Create New Product</h2>
 
-          <form
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
-            onSubmit={handleSubmit}
-          >
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Title"
@@ -77,9 +72,7 @@ const CreateProductModal = () => {
             <select
               className="w-full border p-2 rounded-lg"
               value={formData.category}
-              onChange={(e) =>
-                setFormData({ ...formData, category: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
               required
             >
               {categoryOptions.map((cat, idx) => (
@@ -149,7 +142,7 @@ const CreateProductModal = () => {
                   Creating
                 </>
               ) : (
-                "Add New Product"
+                'Add New Product'
               )}
             </button>
           </form>

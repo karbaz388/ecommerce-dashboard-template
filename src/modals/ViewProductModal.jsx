@@ -1,6 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { toggleViewProductModal } from "../store/slices/extraSlice";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleViewProductModal } from '../store/slices/extraSlice';
 
 const ViewProductModal = ({ selectedProduct }) => {
   const dispatch = useDispatch();
@@ -40,20 +40,17 @@ const ViewProductModal = ({ selectedProduct }) => {
                 <strong>Category:</strong> {selectedProduct.category}
               </p>
               <p>
-                <strong>Price:</strong> Rs{" "}
-                {selectedProduct.price.toLocaleString()}
+                <strong>Price:</strong> Rs {selectedProduct.price.toLocaleString()}
               </p>
               <p>
                 <strong>Ratings:</strong> ⭐ {selectedProduct.ratings}
               </p>
               <p>
-                <strong>Stock:</strong>{" "}
-                {selectedProduct.stock > 0
-                  ? `In Stock (${selectedProduct.stock})`
-                  : "Out of Stock"}
+                <strong>Stock:</strong>{' '}
+                {selectedProduct.stock > 0 ? `In Stock (${selectedProduct.stock})` : 'Out of Stock'}
               </p>
               <p>
-                <strong>Created At:</strong>{" "}
+                <strong>Created At:</strong>{' '}
                 {new Date(selectedProduct.created_at).toLocaleDateString()}
               </p>
             </div>
